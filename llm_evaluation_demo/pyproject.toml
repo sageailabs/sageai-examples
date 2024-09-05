@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "llm-evaluation-demo"
+version = "0.1.0"
+description = ""
+authors = ["frazierprime <josh.frazier@sage.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+transformers = "4.41.2"
+scikit-learn = "1.5.0"
+torch = "2.3.0"
+accelerate = "0.30.1"
+ipywidgets = "8.1.3"
+pandas = "2.2.2"
+matplotlib = "3.9.0"
+termcolor = "^2.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
