@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Lint
-      uses: make lint
+      run: make lint
