@@ -1,0 +1,18 @@
+name: Build code
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Lint
+      uses: make fix lint
+      with:
+        skip-pkg-cache: true
+        skip-build-cache: true
+        args: --timeout=180s
