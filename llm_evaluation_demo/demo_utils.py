@@ -20,9 +20,18 @@ from transformers.models.mistral.modeling_mistral import MistralForCausalLM
 
 
 INSTRUCTION_TEMPLATE_ZOO: Dict[str, str] = {
-    "straightforward": """Given this question `{question}` tell me if this is asking about accounting terminology. Respond with a 'yes' or a 'no' and then explain your reasoning. Use this JSON format for your response {{"answer": "yes/no", "reasoning": <REASONING>}} Use only valid JSON in your response.""",
-    "just_answer": """Given this question `{question}` tell me if this is asking about accounting terminology. Respond with a 'yes' or a 'no' answer. Use this JSON format for your response {{"answer": "yes/no"}} Use only valid JSON in your response.""",
-    "accounting_related": """Given this question `{question}` tell me if this is asking about something accounting related. Respond with a 'yes' or a 'no' and then explain your reasoning. Use this JSON format for your response {{"answer": "yes/no", "reasoning": <REASONING>}} Use only valid JSON in your response.""",
+    "straightforward": """Given this question `{question}` tell me if this is asking about accounting terminology. \
+                       Respond with a 'yes' or a 'no' and then explain your reasoning. \
+                       Use this JSON format for your response {{"answer": "yes/no", "reasoning": <REASONING>}} \
+                       Use only valid JSON in your response.""",
+    "just_answer": """Given this question `{question}` tell me if this is asking about accounting terminology. \
+                   Respond with a 'yes' or a 'no' answer. \
+                   Use this JSON format for your response {{"answer": "yes/no"}} \
+                   Use only valid JSON in your response.""",
+    "accounting_related": """Given this question `{question}` tell me if this is asking about something \
+                          accounting related. Respond with a 'yes' or a 'no' and then explain your reasoning. \
+                          Use this JSON format for your response {{"answer": "yes/no", "reasoning": <REASONING>}} \
+                          Use only valid JSON in your response.""",
 }
 
 
@@ -53,6 +62,7 @@ def parse_json_from_response(response: str) -> Dict[str, str]:
         return json_from_string
     except JSONDecodeError:
         print(answers_string)
+        return {"failed_answers_string": answers_string}
 
 
 def format_prompt_for_evaluation(instruction_template: str, question: str) -> str:
@@ -127,9 +137,7 @@ def collect_responses(
     num_skipped = 0
     responses_with_invalid_formats = []
     for idx, row in dataset.iterrows():
-        prompt = format_prompt_for_evaluation(
-            instruction_template=instruction_template, question=row["question"]
-        )
+        prompt = format_prompt_for_evaluation(instruction_template=instruction_template, question=row["question"])
         response = custom_template(model, tokenizer=tokenizer, prompt=prompt)
         if debug:
             print(response)
