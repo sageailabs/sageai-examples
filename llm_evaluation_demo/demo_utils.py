@@ -21,17 +21,17 @@ from transformers.models.mistral.modeling_mistral import MistralForCausalLM
 
 INSTRUCTION_TEMPLATE_ZOO: Dict[str, str] = {
     "straightforward": """Given this question `{question}` tell me if this is asking about accounting terminology. \
-    Respond with a 'yes' or a 'no' and then explain your reasoning. \
-    Use this JSON format for your response {{"answer": "yes/no", "reasoning": <REASONING>}} \
-    Use only valid JSON in your response.""",
+Respond with a 'yes' or a 'no' and then explain your reasoning. \
+Use this JSON format for your response {{"answer": "yes/no", "reasoning": <REASONING>}} \
+Use only valid JSON in your response.""",
     "just_answer": """Given this question `{question}` tell me if this is asking about accounting terminology. \
-    Respond with a 'yes' or a 'no' answer. \
-    Use this JSON format for your response {{"answer": "yes/no"}} \
-    Use only valid JSON in your response.""",
+Respond with a 'yes' or a 'no' answer. \
+Use this JSON format for your response {{"answer": "yes/no"}} \
+Use only valid JSON in your response.""",
     "accounting_related": """Given this question `{question}` tell me if this is asking about something \
-    accounting related. Respond with a 'yes' or a 'no' and then explain your reasoning. \
-    Use this JSON format for your response {{"answer": "yes/no", "reasoning": <REASONING>}} \
-    Use only valid JSON in your response.""",
+accounting related. Respond with a 'yes' or a 'no' and then explain your reasoning. \
+Use this JSON format for your response {{"answer": "yes/no", "reasoning": <REASONING>}} \
+Use only valid JSON in your response.""",
 }
 
 
