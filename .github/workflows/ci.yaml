@@ -21,7 +21,7 @@ jobs:
     - name: install dependencies
       run: make install
     - name: Lint
-      run: make fix
+      run: make lint
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
