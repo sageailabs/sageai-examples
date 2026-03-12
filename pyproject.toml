@@ -9,7 +9,7 @@ readme = "README.md"
 python = "~3.11.3"
 
 [tool.poetry.dev-dependencies]
-black = "^24.8.0"
+black = "^26.3.1"
 flake8 = "^6.1.0"
 flake8-builtins = "^2.1.0"
 flake8-isort = "^6.0.0"
