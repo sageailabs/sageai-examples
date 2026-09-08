@@ -15,7 +15,7 @@ from sklearn.metrics import (
     recall_score,
 )
 from termcolor import colored
-from transformers.models.llama.tokenization_llama_fast import LlamaTokenizerFast
+from transformers.models.llama.tokenization_llama import LlamaTokenizerFast
 from transformers.models.mistral.modeling_mistral import MistralForCausalLM
 
 
